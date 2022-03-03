@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav"
+    app:startDestination="@id/PermissionFragment">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:label="Login"
+        android:name="com.podium.pawz.auth.LoginFragment"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/PermissionFragment"
+        android:name="com.podium.pawz.auth.PermissionFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_permission" >
+        <action
+            android:id="@+id/action_PermissionFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+</navigation>
