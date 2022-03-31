@@ -9,17 +9,30 @@
         android:id="@+id/navigation_home"
         android:name="com.podium.pawz.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_rescueFragment"
+            app:destination="@id/rescueFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.podium.pawz.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_rescueFragment"
+            app:destination="@id/rescueFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.podium.pawz.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/rescueFragment"
+        android:name="com.podium.pawz.RescueFragment"
+        android:label="fragment_rescue"
+        tools:layout="@layout/fragment_rescue" />
 </navigation>

@@ -14,6 +14,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="permission_header">Give Permission for the App</string>
     <string name="continue_msg">continue</string>
-
+    <string name="intro">Pawz app is an animal welfare android app for animals under direct human influence, which reveals suffering, rescues animals in need and protects them. Our vision is a world where humans treat animals with respect, empathy and understanding.</string>
+    <string name="mission">Our objective is to rescue and treat the un-owned street animals who have become ill or injured, and through their rescue inspire a community to protect and defend the lives of all animals. We believe all animals deserve our compassion and protection. We are working for the day when all animals’ lives are respected for their inherent value, whether dogs, chickens, cows or birds. Every day we save animals with fractures, wounds, mange, viral diseases, cancer, and much more. We vaccinate against rabies and other illnesses, conduct programs to educate the community about helping animals.</string>
 
 </resources>
