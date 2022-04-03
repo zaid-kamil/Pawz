@@ -45,6 +45,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -80,17 +81,16 @@ public class LoginFragment extends Fragment {
 
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(requireActivity(), task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = auth.getCurrentUser();
-                        Snackbar.make(binding.getRoot(), "Authentication Success.", Snackbar.LENGTH_SHORT).show();
-                        updateUI(user);
-                    } else {
-                        Snackbar.make(binding.getRoot(), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
-                        updateUI(null);
-                    }
-                });
+        auth.signInWithCredential(credential).addOnCompleteListener(requireActivity(), task -> {
+            if (task.isSuccessful()) {
+                FirebaseUser user = auth.getCurrentUser();
+                Snackbar.make(binding.getRoot(), "Authentication Success.", Snackbar.LENGTH_SHORT).show();
+                updateUI(user);
+            } else {
+                Snackbar.make(binding.getRoot(), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
+                updateUI(null);
+            }
+        });
     }
 
 
