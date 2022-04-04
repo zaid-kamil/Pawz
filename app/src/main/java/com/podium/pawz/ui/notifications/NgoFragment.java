@@ -1,5 +1,7 @@
 package com.podium.pawz.ui.notifications;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +36,7 @@ public class NgoFragment extends Fragment {
         binding = FragmentNgoBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
+
     @Override
     public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -53,21 +56,25 @@ public class NgoFragment extends Fragment {
             }
         });
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
     private class NgoAdapter extends RecyclerView.Adapter<NgoAdapter.Holder> {
 
         private final LayoutInflater inflater;
         private final int layout;
+        private final Fragment fragment;
         public List<Ngo> ngoList;
 
         public NgoAdapter(Fragment fragment, int layout, List<Ngo> list) {
             inflater = LayoutInflater.from(fragment.getActivity());
             this.layout = layout;
             ngoList = list;
+            this.fragment = fragment;
         }
 
         @NonNull
@@ -99,7 +106,18 @@ public class NgoFragment extends Fragment {
 
             public void bind(Ngo ngo) {
                 binding.textTitle.setText(ngo.name);
-                binding.textPhone.setText(ngo.phone);
+                binding.textPhone.setText(ngo.phone1);
+                binding.textPhone2.setText(ngo.phone2);
+                binding.textPhone3.setText(ngo.phone3);
+                binding.textWebsite.setText(ngo.website);
+                binding.textAddress.setOnClickListener(v -> {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    String loc = "geo:0,0?q" + ngo.address;
+                    i.setData(Uri.parse(loc));
+                    if (i.resolveActivity(fragment.getContext().getPackageManager()) != null) {
+                        startActivity(i);
+                    }
+                });
             }
         }
     }

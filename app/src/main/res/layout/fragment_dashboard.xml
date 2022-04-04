@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
+        android:text="The Dashboard"
         android:textAlignment="center"
         android:textSize="10sp"
         android:textStyle="italic"
@@ -20,21 +21,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/notification"
+        android:id="@+id/recyclerViewRescue"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="120dp"
+        android:background="#FDFFFD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_dashboard"
+        tools:itemCount="15"
         tools:listitem="@layout/post_card_view" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/rescue"
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="90dp"
         android:text="Rescue Pet"
         app:icon="@drawable/ic_menu_camera"
         app:layout_constraintBottom_toBottomOf="parent"
