@@ -138,6 +138,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:background="@drawable/container_search"
+                    android:contentDescription="@string/app_name"
                     android:padding="12dp"
                     android:src="@drawable/ic_baseline_location_on_24" />
 
