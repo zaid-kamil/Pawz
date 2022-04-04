@@ -11,8 +11,8 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_rescueFragment"
-            app:destination="@id/rescueFragment" />
+            android:id="@+id/action_navigation_home_to_createFragment"
+            app:destination="@id/createFragment" />
     </fragment>
 
     <fragment
@@ -21,8 +21,8 @@
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
-            android:id="@+id/action_navigation_dashboard_to_rescueFragment"
-            app:destination="@id/rescueFragment" />
+            android:id="@+id/action_navigation_dashboard_to_createFragment"
+            app:destination="@id/createFragment" />
     </fragment>
 
     <fragment
@@ -31,8 +31,12 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_ngo" />
     <fragment
-        android:id="@+id/rescueFragment"
-        android:name="com.podium.pawz.RescueFragment"
-        android:label="fragment_rescue"
-        tools:layout="@layout/fragment_rescue" />
+        android:id="@+id/createFragment"
+        android:name="com.podium.pawz.ui.create.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" >
+        <action
+            android:id="@+id/action_createFragment_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+    </fragment>
 </navigation>

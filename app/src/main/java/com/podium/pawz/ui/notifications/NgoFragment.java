@@ -3,6 +3,7 @@ package com.podium.pawz.ui.notifications;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -112,7 +113,8 @@ public class NgoFragment extends Fragment {
                 binding.textWebsite.setText(ngo.website);
                 binding.textAddress.setOnClickListener(v -> {
                     Intent i = new Intent(Intent.ACTION_VIEW);
-                    String loc = "geo:0,0?q" + ngo.address;
+                    String loc = "geo:0,0?q=" + ngo.address;
+                    Log.d("loc",loc);
                     i.setData(Uri.parse(loc));
                     if (i.resolveActivity(fragment.getContext().getPackageManager()) != null) {
                         startActivity(i);

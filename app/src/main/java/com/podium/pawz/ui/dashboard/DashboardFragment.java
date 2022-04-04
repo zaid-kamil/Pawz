@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,9 +36,6 @@ public class DashboardFragment extends Fragment {
 
 
     private FragmentDashboardBinding binding;
-    private FirebaseAuth auth;
-    private FirebaseFirestore db;
-    private RescueAdapter adatper;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,12 +49,14 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        auth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         binding.recyclerViewRescue.setLayoutManager(new LinearLayoutManager(getActivity()));
         List<Animal> animalList = new ArrayList<>();
-        adatper = new RescueAdapter(this, R.layout.post_card_view, animalList);
-        binding.recyclerViewRescue.setAdapter(adatper);
+
+
+        RescueAdapter adapter = new RescueAdapter(this, R.layout.post_card_view, animalList);
+        binding.recyclerViewRescue.setAdapter(adapter);
         db.collection(Constants.ANIMAL).get().addOnSuccessListener(queryDocumentSnapshots -> {
             if (queryDocumentSnapshots.size() > 0) {
                 for (QueryDocumentSnapshot item : queryDocumentSnapshots) {
@@ -64,6 +64,9 @@ public class DashboardFragment extends Fragment {
                     binding.recyclerViewRescue.getAdapter().notifyDataSetChanged();
                 }
             }
+        });
+        binding.fab.setOnClickListener(v->{
+            NavHostFragment.findNavController(this).navigate(R.id.action_navigation_dashboard_to_createFragment);
         });
     }
 
